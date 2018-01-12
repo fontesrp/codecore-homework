@@ -8,3 +8,10 @@ const hello = {
       'Wish List': ['Conquer the Seven Kingdoms', 'Get my baby back', 'My hand needs to chill'],
     }
 };
+
+const listBoards = function () {
+
+    const separator = "------------------\n";
+
+    return Object.keys(hello).reduce((str, key, idx) => `${str}${idx + 1}- ${key}\n${separator}`, separator);
+};
