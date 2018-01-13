@@ -11,12 +11,17 @@ const hello = {
 
 const listBoards = function () {
 
-    const separator = "------------------\n";
+    "use strict";
 
-    return Object.keys(hello).reduce((str, name, idx) => `${str}${idx + 1}- ${name}\n${separator}`, separator);
+    const lnBrk = "\n";
+    const separator = `------------------${lnBrk}`;
+
+    return Object.keys(hello).reduce((str, name, idx) => `${str}${idx + 1}- ${name}${lnBrk}${separator}`, separator);
 };
 
 const createBoard = function (boardName) {
+
+    "use strict";
 
     if (hello[boardName] !== undefined) {
         return "Board already exists";
@@ -29,6 +34,8 @@ const createBoard = function (boardName) {
 
 const removeBoard = function (boardName) {
 
+    "use strict";
+
     if (hello[boardName] === undefined) {
         return "Board doesn't exist";
     }
@@ -40,18 +47,21 @@ const removeBoard = function (boardName) {
 
 const displayBoard = function (boardName) {
 
+    "use strict";
+
     if (hello[boardName] === undefined) {
         return "Board doesn't exist";
     }
 
-    const separator = "|--------------\n";
+    const lnBrk = "\n";
+    const separator = `|--------------${lnBrk}`;
 
     let str = separator;
 
     Object.keys(hello[boardName]).forEach(function (list) {
 
         // Section header (list name)
-        str += `| ${list}\n${separator}`;
+        str += `| ${list}${lnBrk}${separator}`;
 
         // Items (cards)
         const bullet = "|> ";
@@ -62,6 +72,8 @@ const displayBoard = function (boardName) {
 };
 
 const createList = function (boardName, listName) {
+
+    "use strict";
 
     if (hello[boardName] === undefined) {
         return "Board doesn't exist";
@@ -78,6 +90,8 @@ const createList = function (boardName, listName) {
 
 const createCard = function (boardName, listName, cardName) {
 
+    "use strict";
+
     if (hello[boardName] === undefined) {
         return "Board doesn't exist";
     }
@@ -93,6 +107,8 @@ const createCard = function (boardName, listName, cardName) {
 
 const removeList = function (boardName, listName) {
 
+    "use strict";
+
     if (hello[boardName] === undefined) {
         return "Board doesn't exist";
     }
@@ -107,6 +123,8 @@ const removeList = function (boardName, listName) {
 };
 
 const removeCard = function (boardName, listName, cardIdx) {
+
+    "use strict";
 
     if (hello[boardName] === undefined) {
         return "Board doesn't exist";
@@ -126,6 +144,8 @@ const removeCard = function (boardName, listName, cardIdx) {
 };
 
 const moveCard = function (boardName, fromList, toList, fromCardIndex, toCardIndex) {
+
+    "use strict";
 
     if (hello[boardName] === undefined) {
         return "Board doesn't exist";
@@ -157,19 +177,19 @@ console.log("listBoards:\n" + listBoards());
 console.log("createBoard('Cuisine'): " + createBoard("Cuisine"));
 console.log("createBoard('Tester Board'): " + createBoard("Tester Board"));
 
-console.log("removeBoard('Dreams'): " + removeBoard("Dreams"))
+console.log("removeBoard('Dreams'): " + removeBoard("Dreams"));
 
 console.log("listBoards:\n" + listBoards());
 
-console.log("displayBoard('Tester Board'):\n" + displayBoard("Tester Board"))
+console.log("displayBoard('Tester Board'):\n" + displayBoard("Tester Board"));
 
 console.log("createList('Cuisine', 'Types'): " + createList("Cuisine", "Types"));
 console.log("createCard('Cuisine', 'Types', 'Vietnamese'): " + createCard("Cuisine", "Types", "Vietnamese"));
 
-console.log("displayBoard('Cuisine'):\n" + displayBoard("Cuisine"))
+console.log("displayBoard('Cuisine'):\n" + displayBoard("Cuisine"));
 
 console.log("removeList('Tester Board', 'Done'): " + removeList("Tester Board", "Done"));
 console.log("removeCard('Tester Board', 'Doing', 2): " + removeCard("Tester Board", "Doing", 2));
-console.log("moveCard('Tester Board', 'Doing', 'To Do', 1, 1): " + moveCard("Tester Board", "Doing", "To Do", 1, 1))
+console.log("moveCard('Tester Board', 'Doing', 'To Do', 1, 1): " + moveCard("Tester Board", "Doing", "To Do", 1, 1));
 
 console.log("displayBoard('Tester Board'):\n" + displayBoard("Tester Board"));
