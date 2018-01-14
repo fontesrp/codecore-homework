@@ -140,7 +140,7 @@ const removeCard = function (boardName, listName, cardIdx) {
 
     hello[boardName][listName].splice(cardIdx, 1);
 
-    // If the card was added, return undefined
+    // If the card was removed, return undefined
 };
 
 const moveCard = function (boardName, fromList, toList, fromCardIndex, toCardIndex) {
@@ -152,7 +152,7 @@ const moveCard = function (boardName, fromList, toList, fromCardIndex, toCardInd
     }
 
     if (hello[boardName][fromList] === undefined) {
-        return "Source list doesn't exist";
+        return "List doesn't exist";
     }
 
     if (hello[boardName][fromList][fromCardIndex] === undefined) {
@@ -167,8 +167,10 @@ const moveCard = function (boardName, fromList, toList, fromCardIndex, toCardInd
         return "Invalid destination index";
     }
 
+    // Insert card in the destination list
     hello[boardName][toList].splice(toCardIndex, 0, hello[boardName][fromList][fromCardIndex]);
 
+    // Remove card from the origin list
     hello[boardName][fromList].splice(fromCardIndex, 1);
 };
 
