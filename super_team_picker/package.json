@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www",
+    "db:create": "createdb --echo super_team_picker",
+    "db:drop": "dropdb --echo --if-exists super_team_picker"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
