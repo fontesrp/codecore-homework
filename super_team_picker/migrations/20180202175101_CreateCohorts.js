@@ -8,6 +8,7 @@ exports.up = function(knex) {
         table.increments("id");
 
         table.string("name");
+        table.text("logo");
 
         table.timestamps(false, true);
     });
