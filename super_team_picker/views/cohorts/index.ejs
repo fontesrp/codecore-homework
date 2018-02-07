@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <% cohorts.forEach(function (ch) { %>
+    <div class="card" style="margin-top: 10px;">
+        <div class="card-body">
+            <div style="margin-bottom: 10px;">
+                <img src="<%= ch.logo %>" class="rounded-circle d-inline" style="object-fit: cover; height: 50px; width: 50px; margin-right: 1%;">
+                <h5 class="card-title d-inline"><%= ch.name %></h5>
+            </div>
+            <p class="card-text"><%= ch.members %></p>
+            <a href="/cohorts/<%= ch.id %>" class="btn btn-primary">Show cohort</a>
+        </div>
+    </div>
+    <% }); %>
+</div>
+
+<%- include("../partials/footer") %>

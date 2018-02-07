@@ -9,6 +9,7 @@ exports.up = function(knex) {
 
         table.string("name");
         table.text("logo");
+        table.text("members");
 
         table.timestamps(false, true);
     });
