@@ -11,27 +11,15 @@
 
         const arr = usrArr.slice();
 
-        for (let i = 0; i < arr.length; i += 1) {
+        arr.forEach(function (curr, idx) {
 
-            let idx = randBetween(i, arr.length);
+            let rand = randBetween(idx, arr.length);
 
-            let tmp = arr[idx];
-            arr[idx] = arr[i];
-            arr[i] = tmp;
-        }
+            arr[idx] = arr[rand];
+            arr[rand] = curr;
+        });
 
         return arr;
-    };
-
-    const byTeamSize = function (qtt, members) {
-
-        const teams = [];
-
-        for (let m = 0; m < members.length; m += qtt) {
-            teams.push(members.slice(m, m + qtt));
-        }
-
-        return teams;
     };
 
     const byTeamCount = function (qtt, members) {
@@ -42,7 +30,7 @@
 
         let t = 0;
 
-        members.forEach(function (name) {
+        shuffle(members).forEach(function (name) {
 
             if (teams[t] === undefined) {
                 teams[t] = [name];
@@ -60,9 +48,16 @@
         return teams;
     };
 
+    const byTeamSize = function (qtt, members) {
+
+        const teamQtt = Math.round(members.length / qtt);
+
+        return byTeamCount(teamQtt, members);
+    };
+
     exports.divide = function (method, qtt, members) {
 
-        const mem = shuffle(members.split(",").map(name => name.trim()));
+        const mem = members.split(",").map(name => name.trim());
         qtt = Number(qtt);
 
         switch (method) {
