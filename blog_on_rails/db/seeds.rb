@@ -7,9 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Post.destroy_all
+Comment.destroy_all
 
 100.times do
-  Post.create title: "#{Faker::Simpsons.quote}-#{(1..1000).to_a.sample}", body: Faker::Seinfeld.quote.ljust(50, "1234")
+
+  p = Post.create title: "#{Faker::Beer.name}-#{(1..1000).to_a.sample}", body: Faker::Seinfeld.quote.ljust(50, "1234")
+
+  if p.valid?
+    rand(0..10).times do
+        Comment.create body: Faker::Movie.quote, post: p
+    end
+  end
 end
 
 puts "Created #{Post.count} new posts"
+puts "Created #{Comment.count} new comments"

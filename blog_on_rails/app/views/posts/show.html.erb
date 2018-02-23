@@ -1,0 +1,31 @@
+<section class="mt-4">
+    <h1><%= @post.title %></h1>
+    <p><%= @post.body %></p>
+    <p><small>Posted <%= time_ago_in_words @post.created_at %> ago</small></p>
+    <div>
+        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-primary", role: "button" %>
+        <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" }, class: "btn btn-outline-primary", role: "button" %>
+    </div>
+</section>
+<section class="mt-4">
+    <h3>Comment</h3>
+    <%= form_for [@post, @comment] do |f| %>
+        <div class="form-group">
+            <%= f.text_area :body, class: "form-control", placeholder: "What's on your mind?" %>
+        </div>
+        <%= f.submit "Submit", class: "btn btn-outline-primary" %>
+    <% end %>
+</section>
+<section class="mt-4">
+    <% @post.comments.each do |cmt| %>
+        <p>
+            <%= cmt.body %>
+            <br>
+            <small>
+                Commented <%= time_ago_in_words cmt.created_at %> ago
+                •
+                <%= link_to "Delete", post_comment_path(@post, cmt), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } %>
+            </small>
+        </p>
+    <% end %>
+</section>

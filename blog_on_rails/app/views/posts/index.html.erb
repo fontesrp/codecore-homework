@@ -1,1 +1,14 @@
-<h1>Index</h1>
+<div class="row">
+  <% @posts.each do |post| %>
+  <div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="card-title">
+          <%= link_to post.title, post_path(post), class: "h5 text-primary" %>
+        </div>
+        <p class="card-text"><%= post.body %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
