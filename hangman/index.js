@@ -93,6 +93,7 @@
 
         new Audio(`audio/${sound}`).play();
 
+        // Delay showing message to allow the audio to play
         setTimeout(function () {
 
             alert(msg);
